@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">WoWeather</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="hourly_weather">Hourly Weather</string>
+    <string name="daily">Daily</string>
+    <string name="info_details">Information Details</string>
+    <string name="icon">icon</string>
+    <string name="aqi">AQI - Air Quality Index</string>
+    <string name="aqi_info">Think of the AQI as a yardstick that runs from 0 to 500. The higher the AQI value, the greater the level of air pollution and the greater the health concern.</string>
+    <string name="humidity">Humidity</string>
+    <string name="air_pressure">Air pressure</string>
+    <string name="wind">Wind velocity</string>
+    <string name="fog">Fog</string>
+    <string name="recent_search">Recent search</string>
+    <string name="search">Search</string>
+    <string name="location_manager">Location Manager</string>
+    <string name="add_location">Add location</string>
+    <string name="empty_search">Nothing found.</string>
+    <string name="last_refresh">Last refresh was in</string>
+    <string name="error">Error</string>
+    <string name="error_connection">Network is not available.</string>
+    <string name="ok">OK</string>
+</resources>
