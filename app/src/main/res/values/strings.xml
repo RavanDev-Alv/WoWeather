@@ -4,6 +4,7 @@
     <string name="home">Home</string>
     <string name="settings">Settings</string>
     <string name="hourly_weather">Hourly Weather</string>
+    <string name="hourly_temperature_chart">Temperature trend</string>
     <string name="daily">Daily</string>
     <string name="info_details">Information Details</string>
     <string name="icon">icon</string>
