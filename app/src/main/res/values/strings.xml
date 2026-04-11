@@ -22,4 +22,5 @@
     <string name="error">Error</string>
     <string name="error_connection">Network is not available.</string>
     <string name="ok">OK</string>
+    <string name="use_fahrenheit">Use Fahrenheit for temperature:</string>
 </resources>

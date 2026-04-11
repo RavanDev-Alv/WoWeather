@@ -10,6 +10,7 @@ import com.aliyev.woweather.domain.useCase.local.DataStoreUseCase
 import com.aliyev.woweather.domain.useCase.remote.LocationUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -34,9 +35,12 @@ class HomeViewModel @Inject constructor(
 
     fun getForecast(city: String, days: Int) {
         viewModelScope.launch {
+            val isFahrenheitSelected =
+                dataStoreUseCase.getIsFahrenheitSelected().firstOrNull() == true
+
             locationUseCase.getForecast(city, days).handleResult(
                 onComplete = {
-                    setState(HomeUiState.Forecast(it))
+                    setState(HomeUiState.Forecast(it, isFahrenheitSelected))
                 },
                 onLoading = {
                     setState(HomeUiState.Loading)
@@ -49,7 +53,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-
 }
 
 sealed interface HomeUiState : State {
@@ -60,7 +63,7 @@ sealed interface HomeUiState : State {
 
     data class CityToken(val token: String) : HomeUiState
 
-    data class Forecast(val data: ForecastUiModel) : HomeUiState
+    data class Forecast(val data: ForecastUiModel, val isFahrenheitSelected: Boolean) : HomeUiState
 
 }
 

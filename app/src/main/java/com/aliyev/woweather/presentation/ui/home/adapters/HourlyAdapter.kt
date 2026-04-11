@@ -6,16 +6,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aliyev.woweather.common.base.BaseAdapter
 import com.aliyev.woweather.databinding.ItemHourlyForecastBinding
 import com.aliyev.woweather.domain.model.forecast.HourUiModel
+import com.aliyev.woweather.domain.model.forecast.HourUiModel.Companion.getTemperature
 
 class HourlyAdapter : BaseAdapter<HourUiModel>() {
 
     var onClickHourlyItem: (HourUiModel) -> Unit = {}
+
+    var isFahrenheitSelected = false
 
     inner class HourlyViewHolder(private val binding: ItemHourlyForecastBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: HourUiModel) {
             with(binding) {
                 data = item
+                textViewHourly.text = item.getTemperature(isFahrenheitSelected)
                 executePendingBindings()
 
                 cardHourly.setOnClickListener {

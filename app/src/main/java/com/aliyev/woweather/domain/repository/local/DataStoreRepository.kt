@@ -12,4 +12,8 @@ interface DataStoreRepository {
 
     suspend fun getIsCitySelected(): Flow<Boolean?>
 
+    fun getIsFahrenheitSelected(): Flow<Boolean>
+
+    suspend fun setIsFahrenheitSelected(isSelected: Boolean)
+
 }

@@ -11,6 +11,7 @@ import com.aliyev.woweather.common.utils.enableTransitionAnimation
 import com.aliyev.woweather.common.utils.progressDialog
 import com.aliyev.woweather.common.utils.setStatusBarColor
 import com.aliyev.woweather.databinding.FragmentHomeBinding
+import com.aliyev.woweather.domain.model.forecast.CurrentUiModel.Companion.getTemperature
 import com.aliyev.woweather.domain.model.forecast.ForecastUiModel
 import com.aliyev.woweather.presentation.ui.home.adapters.DailyAdapter
 import com.aliyev.woweather.presentation.ui.home.adapters.HourlyAdapter
@@ -38,11 +39,10 @@ class HomeFragment :
                     HomeUiState.Error -> pb.cancel()
                     is HomeUiState.Forecast -> {
                         pb.cancel()
-                        setUI(it.data)
+                        setUI(it.data, it.isFahrenheitSelected)
                     }
 
                     is HomeUiState.Loading -> pb.show()
-                    else -> Unit
                 }
             }
         }
@@ -82,18 +82,22 @@ class HomeFragment :
                 )
             }
             buttonLocation.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLocationManagerFragment()) }
+
+            buttonSettings.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToSettingsFragment()) }
         }
     }
 
-    private fun setUI(forecast: ForecastUiModel) {
+    private fun setUI(forecast: ForecastUiModel, isFahrenheitSelected: Boolean) {
         with(binding) {
             data = forecast
             isDay = forecast.current?.isDay == 1
 
             setStatusBarColor(if (forecast.current?.isDay == 1) R.color.blue_4F else R.color.black_4C)
 
+            textCurrentTemperature.text = forecast.current.getTemperature(isFahrenheitSelected)
 
-
+            hourlyAdapter.isFahrenheitSelected = isFahrenheitSelected
+            dailyAdapter.isFahrenheitSelected = isFahrenheitSelected
             hourlyAdapter.submitData(forecast.forecast?.forecastday?.firstOrNull()?.hour?.filter { it.time.toString() >= forecast.current?.lastUpdated.toString() })
             dailyAdapter.submitData(forecast.forecast?.forecastday)
         }

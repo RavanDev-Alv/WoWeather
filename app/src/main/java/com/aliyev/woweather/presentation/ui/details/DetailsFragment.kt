@@ -14,6 +14,7 @@ import com.aliyev.woweather.common.utils.progressDialog
 import com.aliyev.woweather.databinding.FragmentDetailsBinding
 import com.aliyev.woweather.domain.model.forecast.ForecastUiModel
 import com.aliyev.woweather.domain.model.forecast.ForecastdayUiModel
+import com.aliyev.woweather.domain.model.forecast.ForecastdayUiModel.Companion.getTemperature
 import com.aliyev.woweather.presentation.ui.home.adapters.HourlyAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.random.Random
@@ -45,8 +46,7 @@ class DetailsFragment :
 
                     is DetailsUiState.ForecastData -> {
                         pb.cancel()
-                        setData(it.data)
-
+                        setData(it.data, it.isFahrenheitSelected)
                     }
                 }
             }
@@ -93,7 +93,7 @@ class DetailsFragment :
         }
     }
 
-    private fun setData(data: ForecastUiModel) {
+    private fun setData(data: ForecastUiModel, isFahrenheitSelected: Boolean) {
         with(binding) {
             forecastData = data
             isDay = data.current?.isDay == 1
@@ -105,8 +105,9 @@ class DetailsFragment :
 
             forecastDay = forecastDayItem
 
-
+            hourlyAdapter.isFahrenheitSelected = isFahrenheitSelected
             hourlyAdapter.submitData(forecastDayItem?.hour)
+            textView11.text = forecastDayItem.getTemperature(isFahrenheitSelected)
             val randomAqi = Random.nextInt(0, 100)
             textAqi.animateNumbers(0, randomAqi)
             aqiView.animateProgress(randomAqi.toFloat())

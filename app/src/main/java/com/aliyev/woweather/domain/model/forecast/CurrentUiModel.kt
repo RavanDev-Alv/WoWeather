@@ -25,4 +25,11 @@ data class CurrentUiModel(
     val windDir: String?,
     val windKph: Double?,
     val windMph: Double?,
-)
+) {
+
+    companion object {
+        fun CurrentUiModel?.getTemperature(isFahrenheitSelected: Boolean) =
+            if (isFahrenheitSelected) "${this?.tempF} ºF" else "${this?.tempC} ºC"
+    }
+
+}

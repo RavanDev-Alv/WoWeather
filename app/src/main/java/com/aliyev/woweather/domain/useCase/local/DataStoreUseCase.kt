@@ -16,4 +16,9 @@ class DataStoreUseCase @Inject constructor(
 
     suspend fun getIsCitySelected(): Flow<Boolean?> = repo.getIsCitySelected()
 
+    fun getIsFahrenheitSelected(): Flow<Boolean> = repo.getIsFahrenheitSelected()
+
+    suspend fun setIsFahrenheitSelected(isSelected: Boolean) =
+        repo.setIsFahrenheitSelected(isSelected)
+
 }

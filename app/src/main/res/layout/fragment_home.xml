@@ -60,10 +60,25 @@
                 app:iconPadding="0dp"
                 app:iconTint="@color/black_20"
                 app:iconTintMode="multiply"
-                app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
+                app:layout_constraintEnd_toStartOf="@+id/buttonSettings"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSettings"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/baseline_settings_24"
+                app:iconSize="18dp"
+                app:iconTint="@color/black_20"
+                app:iconTintMode="multiply"
+                app:layout_constraintBottom_toBottomOf="@+id/buttonLocation"
+                app:layout_constraintEnd_toStartOf="@id/buttonSearch"
+                app:layout_constraintStart_toEndOf="@+id/buttonLocation"
+                app:layout_constraintTop_toTopOf="@+id/buttonLocation" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonSearch"
@@ -73,12 +88,10 @@
                 app:icon="@drawable/search_icon"
                 app:iconSize="18dp"
                 android:layout_marginEnd="16dp"
-
                 app:iconTint="@color/black_20"
                 app:iconTintMode="multiply"
                 app:layout_constraintBottom_toBottomOf="@+id/buttonLocation"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/buttonLocation"
                 app:layout_constraintTop_toTopOf="@+id/buttonLocation" />
 
 
@@ -147,10 +160,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                         <TextView
+                            android:id="@+id/textCurrentTemperature"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/sf_regular"
-                            android:text='@{String.valueOf(data.current.tempC)+"ºC"}'
                             android:textColor="@color/white"
                             android:textSize="20sp" />
 

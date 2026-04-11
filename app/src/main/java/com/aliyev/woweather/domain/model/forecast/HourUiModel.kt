@@ -39,4 +39,11 @@ data class HourUiModel(
     val windMph: Double?,
     val windchillC: Double?,
     val windchillF: Double?,
-) : Parcelable
+) : Parcelable {
+
+    companion object {
+        fun HourUiModel?.getTemperature(isFahrenheitSelected: Boolean) =
+            if (isFahrenheitSelected) "${this?.tempF} ºF" else "${this?.tempC} ºC"
+    }
+
+}

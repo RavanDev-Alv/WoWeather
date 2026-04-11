@@ -6,16 +6,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aliyev.woweather.common.base.BaseAdapter
 import com.aliyev.woweather.databinding.ItemDailyForecastBinding
 import com.aliyev.woweather.domain.model.forecast.ForecastdayUiModel
+import com.aliyev.woweather.domain.model.forecast.ForecastdayUiModel.Companion.getTemperature
 
 class DailyAdapter : BaseAdapter<ForecastdayUiModel>() {
 
     var onClickDailyItem: (ForecastdayUiModel) -> Unit = {}
+
+    var isFahrenheitSelected = false
 
     inner class DailyViewHolder(private val binding: ItemDailyForecastBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ForecastdayUiModel) {
             with(binding) {
                 data = item
+                textView8.text = item.getTemperature(isFahrenheitSelected)
                 executePendingBindings()
 
                 buttonGo.setOnClickListener {

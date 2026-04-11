@@ -5,7 +5,7 @@
 
         <variable
             name="forecastData"
-            type="com.aliyev.woweather.domain.model.forecast.ForecastUiModel " />
+            type="com.aliyev.woweather.domain.model.forecast.ForecastUiModel" />
 
         <variable
             name="isDay"
@@ -123,7 +123,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/sf_regular"
-                        android:text='@{forecastDay.day.avgtempC + "ºC"}'
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         app:layout_constraintEnd_toEndOf="@+id/imageView3"

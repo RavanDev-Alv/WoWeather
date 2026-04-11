@@ -60,6 +60,9 @@
             app:popExitAnim="@anim/slide_out_left"
             android:id="@+id/action_homeFragment_to_hourlyFragment"
             app:destination="@id/hourlyFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -123,4 +126,8 @@
             android:name="hourData"
             app:argType="com.aliyev.woweather.domain.model.forecast.HourUiModel" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.aliyev.woweather.presentation.ui.settings.SettingsFragment"
+        android:label="SettingsFragment" />
 </navigation>

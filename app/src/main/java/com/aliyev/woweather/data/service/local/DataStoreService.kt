@@ -17,6 +17,7 @@ class DataStoreService @Inject constructor(
     private object PreferencesKey {
         val isCitySelected = booleanPreferencesKey("city_selected")
         val cityToken = stringPreferencesKey("city_token")
+        val isFahrenheitSelected = booleanPreferencesKey("isFahrenheitSelected")
     }
 
     suspend fun setCityToken(token: String) {
@@ -31,16 +32,28 @@ class DataStoreService @Inject constructor(
         }
     }
 
+    suspend fun setIsFahrenheitSelected(isSelected: Boolean) {
+        service.edit {
+            it[PreferencesKey.isFahrenheitSelected] = isSelected
+        }
+    }
+
     val cityToken: Flow<String?> = service.data.catch {
         throw it
     }.map {
-        it[PreferencesKey.cityToken] ?: ""
+        it[PreferencesKey.cityToken].orEmpty()
     }
 
     val isCitySelected: Flow<Boolean?> = service.data.catch {
         throw it
     }.map {
-        it[PreferencesKey.isCitySelected] ?: false
+        it[PreferencesKey.isCitySelected] == true
+    }
+
+    val isFahrenheitSelected: Flow<Boolean> = service.data.catch {
+        throw it
+    }.map {
+        it[PreferencesKey.isFahrenheitSelected] == true
     }
 
 }

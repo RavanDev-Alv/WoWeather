@@ -53,7 +53,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     val nav_version = "2.7.5"
-    val room_version = "2.6.0"
+    val room_version = "2.7.0"
     val lottieVersion = "3.4.0"
 
     //navigation
@@ -80,8 +80,8 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
 
     //hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.57.2")
+    kapt("com.google.dagger:hilt-compiler:2.57.2")
 
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
