@@ -24,7 +24,8 @@ abstract class BaseAdapter<T : Any>(val selected: Boolean = false) :
             viewType = viewType
         )
 
-    fun submitData(data: List<T>?) {
+    fun submitData(data: List<T>?, forceUpdate: Boolean = false) {
+        if (forceUpdate) items.clear()
         val diffCallback = DiffUtilCallback(items, data ?: emptyList())
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         items.clear()

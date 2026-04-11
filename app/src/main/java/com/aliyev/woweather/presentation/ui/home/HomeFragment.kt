@@ -98,8 +98,11 @@ class HomeFragment :
 
             hourlyAdapter.isFahrenheitSelected = isFahrenheitSelected
             dailyAdapter.isFahrenheitSelected = isFahrenheitSelected
-            hourlyAdapter.submitData(forecast.forecast?.forecastday?.firstOrNull()?.hour?.filter { it.time.toString() >= forecast.current?.lastUpdated.toString() })
-            dailyAdapter.submitData(forecast.forecast?.forecastday)
+            hourlyAdapter.submitData(
+                forecast.forecast?.forecastday?.firstOrNull()?.hour?.filter { it.time.toString() >= forecast.current?.lastUpdated.toString() },
+                forceUpdate = true
+            )
+            dailyAdapter.submitData(forecast.forecast?.forecastday, forceUpdate = true)
         }
     }
 
