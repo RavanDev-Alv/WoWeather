@@ -25,12 +25,17 @@ abstract class BaseAdapter<T : Any>(val selected: Boolean = false) :
         )
 
     fun submitData(data: List<T>?, forceUpdate: Boolean = false) {
-        if (forceUpdate) items.clear()
-        val diffCallback = DiffUtilCallback(items, data ?: emptyList())
-        val diffResult = DiffUtil.calculateDiff(diffCallback)
-        items.clear()
-        items.addAll(data ?: emptyList())
-        diffResult.dispatchUpdatesTo(this)
+        if (forceUpdate) {
+            items.clear()
+            items.addAll(data ?: emptyList())
+            notifyDataSetChanged()
+        } else {
+            val diffCallback = DiffUtilCallback(items, data ?: emptyList())
+            val diffResult = DiffUtil.calculateDiff(diffCallback)
+            items.clear()
+            items.addAll(data ?: emptyList())
+            diffResult.dispatchUpdatesTo(this)
+        }
     }
 
     inner class DiffUtilCallback<T>(private val oldList: List<T>, private val newList: List<T>) :
