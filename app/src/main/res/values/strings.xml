@@ -24,4 +24,11 @@
     <string name="error_connection">Network is not available.</string>
     <string name="ok">OK</string>
     <string name="use_fahrenheit">Use Fahrenheit for temperature:</string>
+    <string name="wind_compass">Wind</string>
+    <string name="wind_from">From %1$s</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="direction">Direction</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunrise_at">Sunrise : %1$s</string>
+    <string name="sunset_at">Sunset : %1$s</string>
 </resources>

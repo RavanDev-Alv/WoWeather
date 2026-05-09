@@ -17,4 +17,10 @@
     <color name="grey_83">#838BAA</color>
     <color name="black_44">#444E72</color>
     <color name="red_F">#FF0000</color>
+    <color name="wind_compass_face_center">#FAFCFF</color>
+    <color name="wind_compass_face_edge">#EEF1F8</color>
+    <color name="wind_compass_ring">#1A2E2E2E</color>
+    <color name="wind_compass_ring_inner">#0D2E2E2E</color>
+    <color name="wind_arrow_head">#D0430F</color>
+    <color name="wind_arrow_tail">#888580</color>
 </resources>

@@ -103,6 +103,20 @@ class HomeFragment :
                 forceUpdate = true
             )
             dailyAdapter.submitData(forecast.forecast?.forecastday, forceUpdate = true)
+            windCompass.setWindDirection(
+                runCatching {
+                    forecast.current?.windDegree?.toFloat()
+                }.getOrNull() ?: 0f
+            )
+
+            val astro = forecast.forecast?.forecastday?.firstOrNull()?.astro
+
+            sunriseView.setSunriseFromString(astro?.sunrise.orEmpty())
+            sunriseView.setSunsetFromString(astro?.sunset.orEmpty())
+            sunriseView.setCurrentTimeFromDateTime(forecast.current?.lastUpdated.orEmpty())
+
+            textViewSunset.text = getString(R.string.sunset_at).format(astro?.sunset)
+            textViewSunrise.text = getString(R.string.sunrise_at).format(astro?.sunrise)
         }
     }
 
